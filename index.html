@@ -1,0 +1,259 @@
+{% extends "layout_index.html" %}
+{% block body %}
+
+<div class="center" >
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="loading">Loading</div>
+</div>
+<script>
+function waveout(){
+  document.getElementsByClassName("center")[0].style.display="none";
+}
+setTimeout(waveout,5000);
+</script>
+<div class="row">
+  <h3>Household</h3>
+</div>
+<div class="row">
+  <!-- <div class="col-md-4">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      {{ message }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <div class="card card-body">
+        <form action="{{url_for('add_household')}}" method="POST">
+          <div class="form-group">
+            <input type="text" class="form-control" name="fname" placeholder="First Name">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="lname" placeholder="Last Name">
+          </div>
+          <div class="form-group">
+            <input type="email" class="form-control" name="email" placeholder="Email">
+          </div>
+          <button class="btn btn-primary btn-block">
+            Save 
+          </button>
+        </form>
+      </div>
+  </div> -->
+  <div class="col-md-8">
+    <table id="example" class="table table-striped table-bordered" style="width:100%">
+      <thead>
+        <div class="filter">
+
+        </div>
+       
+        <table >
+       
+        <tr>
+          <th>Household Id</th>
+          <th>Lat</th>
+          <th>Long</th>
+          <th>Total HH Members</th>
+          <th>Male female ratio</th>
+          <th>Total working age members(0-60)</th>
+          <th>no of Migrated member</th>
+          <th>Occupation of the HH Head</th>
+          <th>AMOUNT of PDS(kg)</th>
+          <th>Education of HH</th>
+          <th>Maximum years of education</th>
+          <th>Land Holding(Katha)</th>
+          <th>House type</th>
+          <th>Toilet Facility</th>
+          <th>Electricity</th>
+          <th>Money require to repair houses</th>
+          <th>Extent of House Damage</th>
+          <th>Amount of Loan</th>
+          <th>Extent of crop loss</th>
+          <th>Total Annual Income</th>
+
+
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in list_users %}
+        <tr>
+          <!--<td>{{row[0]}}</td>-->
+          <td>{{row[1]}}</td>
+          <td>{{row[2]}}</td>
+          <td>{{row[3]}}</td>
+          <td>{{row[4]}}</td>
+          <td>{{row[5]}}</td>
+          <td>{{row[6]}}</td>
+          <td>{{row[7]}}</td>
+          <td>{{row[8]}}</td>
+          <td>{{row[9]}}</td>
+          <td>{{row[10]}}</td>
+          <td>{{row[11]}}</td>
+          <td>{{row[12]}}</td>
+          <td>{{row[13]}}</td>
+          <td>{{row[14]}}</td>
+          <td>{{row[15]}}</td>
+          <td>{{row[16]}}</td>
+          <td>{{row[17]}}</td>
+          <td>{{row[18]}}</td>
+          <td>{{row[19]}}</td>
+          <td>{{row[20]}}</td>
+          <!-- <td width="160">
+            <a href="/edit/{{row[0]}}" class="btn btn-secondary btn-sm">edit</a>
+            <a href="/delete/{{row[0]}}" class="btn btn-danger btn-delete btn-sm">delete</a>
+          </td> -->
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Roboto');
+*{
+ margin:0;
+ padding: 0;
+ outline: 0;
+}
+ .filter{  
+ position: absolute;
+ left: 0;
+ top: 0;
+ bottom: 0;
+ right: 0;
+  z-index: 1;
+ background: rgb(233,76,161),width=2320;
+background: -moz-linear-gradient(90deg, rgba(233,76,161,1) 0%, rgba(199,74,233,1) 100% ,width=2320);
+background: -webkit-linear-gradient(90deg, rgba(233,76,161,1) 0%, rgba(199,74,233,1) 100%, width=2320);
+ background: linear-gradient(90deg, rgba(233,76,161,1) 0%, rgba(199,74,233,1) 100%, width=2320);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e94ca1",endColorstr="#c74ae9",GradientType=1);
+opacity: .7;
+} 
+table{
+ /* position: absolute;
+ z-index: 2;
+ left: 50%;
+ top: 50%;
+ transform: translate(-50%,-50%); */
+ width: 60%; 
+ border-collapse: collapse;
+ border-spacing: 0;
+ box-shadow: 0 2px 15px rgba(64,64,64,.7);
+ border-radius: 12px 12px 0 0;
+ overflow: hidden;
+
+}
+td , th{
+ padding: 15px 20px;
+ text-align: center;
+ 
+
+}
+th{
+ background-color: #ba68c8;
+ color: #fafafa;
+ font-family: 'Open Sans',Sans-serif;
+ font-weight: 200;
+ text-transform: uppercase;
+
+}
+tr{
+ width: 100%;
+ background-color: #fafafa;
+ font-family: 'Montserrat', sans-serif;
+}
+tr:nth-child(even){
+ background-color: #eeeeee;
+}
+
+/* //loader
+ */
+ .center {
+  height: 130vh;
+  width: 2350px;
+  display: flex;
+  
+  justify-content: center;
+  align-items: center; 
+  background: #000;
+}
+.loading {
+  text-align: left;
+  color: #fafafa;
+  justify-content: left;
+  align-items:left;
+  font-family: Copperplate; 
+  font-size: 24px; 
+  font-style: italic;
+   font-variant: normal; 
+   font-weight: 700px; 
+   line-height: 12px;
+   size: 20px; 
+
+}
+.wave {
+  width: 5px;
+  height: 100px;
+  background: linear-gradient(45deg, cyan, #fff);
+  margin: 10px;
+  animation: wave 1s linear infinite;
+  border-radius: 20px;
+}
+.wave:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.wave:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.wave:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.wave:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.wave:nth-child(6) {
+  animation-delay: 0.5s;
+}
+.wave:nth-child(7) {
+  animation-delay: 0.6s;
+}
+.wave:nth-child(8) {
+  animation-delay: 0.7s;
+}
+.wave:nth-child(9) {
+  animation-delay: 0.8s;
+}
+.wave:nth-child(10) {
+  animation-delay: 0.9s;
+}
+
+@keyframes wave {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+</style>
+{% endblock %}
